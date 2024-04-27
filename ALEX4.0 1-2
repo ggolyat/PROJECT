@@ -32,6 +32,7 @@ vector< vector<double> > resize(100);
 int total_retrain=0;
 
 std::mutex total_time_mutex;
+double bulkload_time = 0;
 double total_lookup_time = 0;
 double front_lookup_time = 0;
 double middle_lookup_time = 0;
@@ -141,7 +142,7 @@ void process_loop(int ii, int loop)
                     lock_guard<mutex> lock(resize_mutex);
                     resize[loop].push_back(double((i+total_count*sp[ii])/total_count));  //percentage
                     insert_cost_time[loop].push_back(chrono::duration_cast<chrono::nanoseconds>(end_time - start_time).count());
-                    total_retrain++;
+                    //total_retrain++;
                 }
                 //cout << "expand & retrain at front inserting " << i << " : " << new_key << endl;
             }
@@ -202,6 +203,8 @@ void process_loop(int ii, int loop)
             front_lookup_time += std::chrono::duration_cast<std::chrono::nanoseconds>(time_block1 - total_start_time).count();
             middle_lookup_time += std::chrono::duration_cast<std::chrono::nanoseconds>(time_block2 - time_block1).count();
             back_lookup_time += std::chrono::duration_cast<std::chrono::nanoseconds>(total_end_time - time_block2).count();
+            bulkload_time += std::chrono::duration_cast<std::chrono::nanoseconds>(bulkload_end - bulkload_start).count();
+            total_retrain += index.stats_.num_expand_and_retrains;
             cout << loop << " expand & retrain: " << index.stats_.num_expand_and_retrains <<endl;
         }
         
@@ -241,7 +244,7 @@ int main(int argc, char* argv[])
     {
         thread.join();
     }
-
+    cout << "Bulkload time: " << bulkload_time/100 << endl;
     cout << "Total lookup time: " <<  total_lookup_time/100 << " nanoseconds\n";
     cout << "front one lookup time: " <<  front_lookup_time/(100*total_count*sp[ii]) << " nanoseconds\n";
     cout << "middle one lookup time: " <<  middle_lookup_time/(100*total_count*(1.0-sp[ii]*2)) << " nanoseconds\n";
@@ -268,9 +271,11 @@ int main(int argc, char* argv[])
     cout << "total retrain: " << double(total_retrain)/100.0 << " (loc & time cost recoeded)\n";
     std::string filename = "result/1_2_" + to_string(int((1.0-sp[ii]*2)*100 + 0.001)) + "_insert_time.csv";
     exportToCSV(insert_cost_time, filename);
-    plt::scatter(plotx, ploty1);
-    plt::save("result/1_2_" + to_string(int((1.0-sp[ii]*2)*100 + 0.001)) +"_location.jpg");
-    plt::scatter(plotx, ploty2);
-    plt::save("result/1_2_" + to_string(int((1.0-sp[ii]*2)*100 + 0.001)) +"_time.jpg");
+    plt::scatter(ploty1, ploty2);
+    plt::save("result/1_2_" + to_string(int((1.0-sp[ii]*2)*100 + 0.001)) +"_mix.jpg");
+    // plt::scatter(plotx, ploty1);
+    // plt::save("result/1_2_" + to_string(int((1.0-sp[ii]*2)*100 + 0.001)) +"_location.jpg");
+    // plt::scatter(plotx, ploty2);
+    // plt::save("result/1_2_" + to_string(int((1.0-sp[ii]*2)*100 + 0.001)) +"_time.jpg");
     return 0;
 }
