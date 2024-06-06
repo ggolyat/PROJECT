@@ -1,4 +1,3 @@
-## 使用kmean model分好data後輸出成前中後三個.bin
 import numpy as np
 from sklearn.cluster import KMeans
 import threading
@@ -47,17 +46,19 @@ def kmeans_clustering(input_filename, output_filenames):
             cluster_data.tofile(f)
     
     print("Cluster centers for", input_filename)
-    for i in range(3):
-        print("Cluster {}: Center = {}, Size = {}".format(i, cluster_centers[sorted_indices[i]], len(clusters[i])))
+    for i in range(5):
+        print("Cluster {}: Center = {}, Size = {}".format(i, clusters[i][0], len(clusters[i])))
 
 def main():
     for i in range(0, 100):
         input_file = "random_data_4_20_{}.bin".format(i)
-        output_front = "random_data_4_20_{}_front.bin".format(i)
-        output_middle = "random_data_4_20_{}_middle.bin".format(i)
-        output_back = "random_data_4_20_{}_back.bin".format(i)
+        output_1 = "random_data_4_20_{}_1.bin".format(i)
+        output_2 = "random_data_4_20_{}_2.bin".format(i)
+        output_3 = "random_data_4_20_{}_3.bin".format(i)
+        output_4 = "random_data_4_20_{}_4.bin".format(i)
+        output_5 = "random_data_4_20_{}_5.bin".format(i)
 
-        kmeans_clustering(input_file, [output_front, output_middle, output_back])
+        kmeans_clustering(input_file, [output_1, output_2, output_3, output_4, output_5])
 
     print("All files processed")
 
