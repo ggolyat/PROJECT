@@ -1,4 +1,4 @@
-// ALEX5.0 1-4: worst case: 小dataset直接塞
+// ALEX5.0 1-4: worst case: 小dataset直接塞 
 
 #include "../core/alex.h"
 #include <iomanip>
