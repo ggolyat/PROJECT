@@ -1,4 +1,4 @@
-// ALEX4.0 1-2 bulkload 前
+// ALEX4.0 1-2 舊range bulkload 前
 
 #include "../core/alex.h"
 #include <iomanip>
