@@ -1,4 +1,4 @@
-// ALEX3.0
+// ALEX3.0  繪圖找retrain發生的位置(%數)
 
 #include "../core/alex.h"
 #include <iomanip>
