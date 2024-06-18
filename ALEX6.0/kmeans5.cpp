@@ -1,4 +1,4 @@
-// ALEX6.0 先用kmean.py分出五份後直接放進去計時
+// ALEX6.0 先用kmean.py分出五份後直接放進去計時 
 
 #include "../core/alex.h"
 #include <iomanip>
