@@ -1,4 +1,4 @@
-// ALEX5.0 1-3 sort後切3等分
+// ALEX5.0 1-3 sort後切3等分 
 
 #include "../core/alex.h"
 #include <iomanip>
