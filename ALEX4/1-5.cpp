@@ -1,4 +1,4 @@
-// ALEX4.0 1-5 bulkload 前中後一起
+// ALEX4.0 1-5 bulkload 前中後全部一起
 
 #include "../core/alex.h"
 #include <iomanip>
