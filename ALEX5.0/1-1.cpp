@@ -1,4 +1,4 @@
-// ALEX5.0 1-1 1-2: create十萬 固定K=3 分/不分離群值  
+// ALEX5.0 1-1 1-2: create十萬 固定K=3 分/不分離群值   
 
 #include "../core/alex.h"
 #include <iomanip>
