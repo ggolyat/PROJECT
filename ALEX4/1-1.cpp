@@ -1,4 +1,4 @@
-// ALEX4.0 1-1 bulkload 中 insert前後
+// ALEX4.0 1-1 舊的range  bulkload 中 insert前後
 
 #include "../core/alex.h"
 #include <iomanip>
