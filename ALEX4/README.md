@@ -12,7 +12,15 @@
   
 進行五項測試: 
 
-  中、前、前再中、前再中再後、全部
+  1-1: bulkload中
+  
+  1-2: bulkload前
+  
+  1-3: bulkload前再bulkload中
+  
+  1-4: bulkload前再bulkload中再bulkload後
+  
+  1-5: bulkload全部
   
   
 ### 新range:
@@ -23,8 +31,17 @@
   
   range3(1000000000.0, 1000010000.0);
   
-進行五項測試: 前、前再中、前再中再後、中、全部
+進行五項測試: 
 
+  2-1: bulkload前
+  
+  2-2: bulkload前再bulkload中
+  
+  2-3: bulkload前再bulkload中再bulkload後
+  
+  2-4: bulkload中
+  
+  2-5: bulkload全部
 
 五項測試的順序不一樣只是我做的順序錯了
 
