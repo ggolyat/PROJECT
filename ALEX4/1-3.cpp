@@ -1,6 +1,6 @@
 // ALEX4.0 1-3 舊range  bulkload 前中(分開)
 
-#include "../core/alex.h"
+#include "../core/alex.h" 
 #include <iomanip>
 #include <iostream>
 #include <string>
